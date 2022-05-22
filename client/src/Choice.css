@@ -1,0 +1,26 @@
+div.Choice {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+div.Choice-Entry {
+    margin: 5px;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid black;
+    color: black;
+    background-color: transparent;
+}
+
+div.Choice-Entry:hover {
+    cursor: pointer;
+}
+
+div.Choice-Entry.On {
+    border-color: #24a0ed;
+    background-color: #24a0ed;
+    color: white;
+}

@@ -1,0 +1,21 @@
+div.Question {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 400px;
+}
+
+div.Question-Text {
+    font-size: 32px;
+    font-weight: 600;
+    font-style: italic;
+    text-align: center;
+}
+
+div.Question-Main {
+    display: flex;
+    flex-direction: column;
+    padding: 0.25in 0in;
+    width: 100%;
+}
