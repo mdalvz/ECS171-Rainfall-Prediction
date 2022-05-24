@@ -8,7 +8,7 @@ from sklearn.model_selection import train_test_split
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense
 from tensorflow import keras
-from imblearn.over_sampling import RandomOverSampler
+from imblearn.under_sampling import RandomUnderSampler
 
 PARAM = {
     'layer1': 12,
@@ -31,6 +31,7 @@ CLOUDS = [
 
 class Model:
     def clean_data(self):
+        self.data_frame = self.data_frame.drop(['alti'], axis=1)
         for column in list(self.data_frame.columns):
             self.data_frame = self.data_frame[self.data_frame[column] != 'M']
             self.data_frame = self.data_frame[self.data_frame[column] != 'T']
@@ -47,10 +48,10 @@ class Model:
         X = self.data_frame.drop(['rain'], axis=1)
         y = self.data_frame['rain']
         self.X_train, self.X_test, self.Y_train, self.Y_test = train_test_split(X, y, test_size=0.20)
-        over_sampler = RandomOverSampler()
+        over_sampler = RandomUnderSampler()
         self.X_train, self.Y_train = over_sampler.fit_resample(self.X_train, self.Y_train)
-        print(sum(self.Y_train))
-        print(len(self.Y_train))
+        #print(sum(self.Y_train))
+        #print(len(self.Y_train))
     def read_data(self):
         self.data_frame = pd.read_csv(self.csv_name)
     def scale_data(self):
@@ -87,6 +88,9 @@ class Model:
         self.scale_data()
         self.fit_model()
 
-m = Model('Sacramento')
+m = Model('SantaRosa')
+print(m.model_score)
+m.save()
+m = Model('Napa')
 print(m.model_score)
 m.save()
