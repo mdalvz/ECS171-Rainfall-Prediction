@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import RangeQuestion from "./RangeQuestion";
 import ChoiceQuestion from './ChoiceQuestion';
+import Choice from './Choice';
 
 function cToF(celsius) {
     return Math.round(parseFloat(celsius) * 9 / 5 + 32);
@@ -19,6 +20,8 @@ export default function QuestionSequence({onComplete}) {
     const [skyc1, setSkyc1] = useState(SKYC1[0]);
     const MONTH = [ 'JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC' ];
     const [month, setMonth] = useState(MONTH[0]);
+    const MODEL = [ 'Sacramento', 'SantaRosa', 'Napa' ];
+    const [model, setModel] = useState(MODEL[0]);
     switch (index) {
         case 1:
             return (
@@ -49,19 +52,6 @@ export default function QuestionSequence({onComplete}) {
         case 3:
             return (
                 <RangeQuestion
-                    text="What's the altitude?"
-                    min={0}
-                    max={100}
-                    step={1}
-                    value={alti}
-                    format={(x)=>`${x}ft`}
-                    onChange={setAlti}
-                    onContinue={()=>{setIndex(index+1)}}
-                />
-            );
-        case 4:
-            return (
-                <RangeQuestion
                     text="What's the atmospheric pressure?"
                     min={1000}
                     max={1050}
@@ -72,7 +62,7 @@ export default function QuestionSequence({onComplete}) {
                     onContinue={()=>{setIndex(index+1)}}
                 />
             );
-        case 5:
+        case 4:
             return (
                 <RangeQuestion
                     text="What's the relative humidity?"
@@ -85,7 +75,7 @@ export default function QuestionSequence({onComplete}) {
                     onContinue={()=>{setIndex(index+1)}}
                 />
             );
-        case 6:
+        case 5:
             return (
                 <RangeQuestion
                     text="What's the wind speed?"
@@ -98,7 +88,7 @@ export default function QuestionSequence({onComplete}) {
                     onContinue={()=>{setIndex(index+1)}}
                 />
             );
-        case 7:
+        case 6:
             return (
                 <RangeQuestion
                     text="What's the visibility?"
@@ -111,7 +101,7 @@ export default function QuestionSequence({onComplete}) {
                     onContinue={()=>{setIndex(index+1)}}
                 />
             );
-        case 8:
+        case 7:
             return (
                 <ChoiceQuestion
                     text="What's the cloud class?"
@@ -121,13 +111,23 @@ export default function QuestionSequence({onComplete}) {
                     onContinue={()=>{setIndex(index+1)}}
                 />
             );
-        case 9:
+        case 8:
             return (
                 <ChoiceQuestion
                     text="What's the month?"
                     choices={MONTH}
                     value={month}
                     onChange={setMonth}
+                    onContinue={()=>{setIndex(index+1)}}
+                />
+            );
+        case 9:
+            return (
+                <ChoiceQuestion
+                    text="Which model?"
+                    choices={MODEL}
+                    value={model}
+                    onChange={setModel}
                     onContinue={()=>{onComplete({
                         tmpc: parseInt(tmpc),
                         dwpc: parseInt(dwpc),
@@ -137,7 +137,8 @@ export default function QuestionSequence({onComplete}) {
                         sped: parseInt(sped), 
                         vsby: parseInt(vsby), 
                         skyc1, 
-                        month: MONTH.indexOf(month) + 1
+                        month: MONTH.indexOf(month) + 1,
+                        model
                     })}}
                 />
             );

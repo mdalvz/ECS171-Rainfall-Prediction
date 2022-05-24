@@ -1,7 +1,29 @@
 import React, {useState} from 'react';
 import QuestionSequence from './QuestionSequence';
-import Choice from './Choice';
+import Display from './Display';
 import './App.css';
+
+function Main() {
+    const [isDone, setIsDone] = useState(false);
+    const [input, setInput] = useState(null);
+    if (!isDone) {
+        return (
+            <QuestionSequence
+                onComplete={(x) => {
+                    setInput(x);
+                    setIsDone(true);
+                }}
+            />
+        );
+    }
+    else {
+        return (
+            <Display
+                input={input}
+            />
+        );
+    }
+}
 
 function App() {
     const [val, setVal] = useState("ABC");
@@ -13,7 +35,7 @@ function App() {
                 </a>
             </header>
             <main className="App-Main">
-                <QuestionSequence onComplete={(x)=>{alert(JSON.stringify(x))}}/>
+                <Main/>
             </main>
         </div>
     );

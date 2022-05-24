@@ -44,6 +44,7 @@ class Model:
         self.data_frame['rain'] = [(1 if np.float64(x) > 0 else 0) for x in self.data_frame['p01m']]
         self.data_frame = self.data_frame.drop(['p01m'],axis=1)
         self.data_frame.dropna(inplace=True)
+        #print(self.data_frame)
     def split_data(self):
         X = self.data_frame.drop(['rain'], axis=1)
         y = self.data_frame['rain']
@@ -57,6 +58,8 @@ class Model:
     def scale_data(self):
         self.scaler = MinMaxScaler()
         self.scaler.fit(self.X_train)
+        #print(self.X_train)
+        #test_scaler(self.scaler)
         self.X_train = self.scaler.transform(self.X_train)
         self.X_test = self.scaler.transform(self.X_test)
     def save_scaler(self):

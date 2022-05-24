@@ -1,0 +1,16 @@
+
+div.Display-Loader {
+    font-size: 32px;
+    font-style: italic;
+    font-weight: bold;
+}
+
+div.Display {
+    font-size: 32px;
+    font-weight: bold;
+}
+
+div.Display > span {
+    color: lime;
+    font-style: italic;
+}
