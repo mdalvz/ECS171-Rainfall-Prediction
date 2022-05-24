@@ -73,9 +73,10 @@ class Model:
         self.model_history = self.model.fit(self.X_train, self.Y_train, epochs=PARAM['epochs'], verbose=1)
         self.model_score = self.model.evaluate(self.X_test, self.Y_test, verbose=0)
     def save_model(self):
-        self.model_name = f'{self.basename}.model.pickle'
-        with open(self.model_name, 'wb') as f:
-            pickle.dump(self.model, f)
+        self.model_name = f'{self.basename}.model'
+        #with open(self.model_name, 'wb') as f:
+        #    pickle.dump(self.model, f)
+        self.model.save(self.model_name)
     def save(self):
         self.save_scaler()
         self.save_model()
@@ -88,6 +89,9 @@ class Model:
         self.scale_data()
         self.fit_model()
 
+m = Model('Sacramento')
+print(m.model_score)
+m.save()
 m = Model('SantaRosa')
 print(m.model_score)
 m.save()
