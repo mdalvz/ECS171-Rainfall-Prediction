@@ -76,7 +76,7 @@ class Model:
         self.model_history = self.model.fit(self.X_train, self.Y_train, epochs=PARAM['epochs'], verbose=1)
         self.model_score = self.model.evaluate(self.X_test, self.Y_test, verbose=0)
     def save_model(self):
-        self.model_name = f'{self.basename}.model'
+        self.model_name = f'{self.basename}.model.h5'
         #with open(self.model_name, 'wb') as f:
         #    pickle.dump(self.model, f)
         self.model.save(self.model_name)

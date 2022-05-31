@@ -18,7 +18,7 @@ def pth(x):
 chosen_model_id = sys.argv[1]
 if chosen_model_id not in { 'Sacramento', 'SantaRosa', 'Napa' }:
     raise RuntimeError("Invalid Model Name")
-model = keras.models.load_model(pth(f'{chosen_model_id}.model'))
+model = keras.models.load_model(pth(f'{chosen_model_id}.model.h5'))
 with open(pth(f'{chosen_model_id}.scaler.pickle'), 'rb') as f:
     scaler = pickle.load(f)
 
