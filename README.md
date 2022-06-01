@@ -33,3 +33,9 @@ docker run -p 3000:80 rainfall-app
 ```
 
 6. Go to [http://localhost:3000](http://localhost:3000) in your web browser
+
+# Building The Model
+
+Rebuilding the model is not required to run the app because the repo already contains prebuilt model files.
+
+If you want to rebuild the models, run create.py in the model directory. Make sure that the required libraries from requirements.txt are installed on your system.
