@@ -23,13 +23,13 @@ cd ECS171-Rainfall-Prediction
 4. Build the docker image (this may take a long time)
 
 ```
-docker build -t rainfall-app .
+sudo docker build -t rainfall-app .
 ```
 
 5. Run the docker image
 
 ```
-docker run -p 3000:80 rainfall-app
+sudo docker run -p 3000:80 rainfall-app
 ```
 
 6. Go to [http://localhost:3000](http://localhost:3000) in your web browser
