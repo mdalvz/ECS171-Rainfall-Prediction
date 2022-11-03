@@ -1,9 +1,5 @@
 # ECS 171 Group 21 - Rainfall Prediction
 
-Live at [Website](http://5.161.49.47) or [Mirror](http://5.161.75.34:3000)
-
-
-
 # Running
 
 1. You need to have docker installed on your system. [Docker Website](https://www.docker.com/)
